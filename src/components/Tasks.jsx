@@ -1,21 +1,17 @@
 import "./Tasks.css";
+import Task from "./Task";
 
-export function Tasks({ tasks, handleDeleteTask }) {
-  const handleDelete = (task) => {
-    console.log(task);
-    handleDeleteTask(task);
-  };
+export function Tasks({ tasks, handleDeleteTask, handleEditTask }) {
   return (
     <section className="task-list">
-      {tasks.map((task) => {
-        //how to do unique key
-        return (
-          <div className="task" key={task}>
-            <p>{task}</p>
-            <button onClick={() => handleDelete(task)}>X</button>
-          </div>
-        );
-      })}
+      {tasks.map((task, index) => (
+        <Task
+          key={index}
+          task={task}
+          handleDelete={() => handleDeleteTask(task)}
+          handleEdit={handleEditTask}
+        />
+      ))}
       <p>You have {tasks.length} pending tasks</p>
     </section>
   );

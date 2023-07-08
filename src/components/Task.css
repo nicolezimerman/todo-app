@@ -1,0 +1,20 @@
+.task {
+  min-width: 450px;
+  background-color: #a49b9b33;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edit {
+  background-color: rgb(103, 231, 86);
+  margin-right: 10px;
+}
+
+.delete {
+  background-color: rgb(231, 86, 86);
+}
