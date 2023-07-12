@@ -1,12 +1,21 @@
+// @ts-check
+import * as React from "react";
 import { useState } from "react";
 import "./Task.css";
 
+/**
+ * @param {{
+ *   task: import('../hooks/useTasks').Task
+ *   handleDelete: (id: string) => void
+ *   handleEdit: (id: string, newValue: string) => void
+ * }} param0
+ */
 export default function Task({ task, handleDelete, handleEdit }) {
   const [editMode, setEditMode] = useState(false);
-  const [editValue, setEditValue] = useState(task);
+  const [editValue, setEditValue] = useState(task.title);
 
   const handleEditTask = () => {
-    handleEdit(task, editValue);
+    handleEdit(task.id, editValue);
     setEditMode(false);
   };
 
@@ -14,13 +23,13 @@ export default function Task({ task, handleDelete, handleEdit }) {
     <div className="task">
       {editMode ? (
         <input
-          class="input-text"
+          className="input-text"
           type="text"
           value={editValue}
           onChange={(e) => setEditValue(e.target.value)}
         />
       ) : (
-        <p>{task}</p>
+        <p>{task.title}</p>
       )}
       <div className="actions">
         {editMode ? (
@@ -32,7 +41,7 @@ export default function Task({ task, handleDelete, handleEdit }) {
             Edit
           </button>
         )}
-        <button className="delete" onClick={() => handleDelete(task)}>
+        <button className="delete" onClick={() => handleDelete(task.id)}>
           Delete
         </button>
       </div>

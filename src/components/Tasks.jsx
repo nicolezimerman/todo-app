@@ -4,11 +4,11 @@ import Task from "./Task";
 export function Tasks({ tasks, handleDeleteTask, handleEditTask }) {
   return (
     <section className="task-list">
-      {tasks.map((task, index) => (
+      {tasks.map((task) => (
         <Task
-          key={index}
+          key={task.id}
           task={task}
-          handleDelete={() => handleDeleteTask(task)}
+          handleDelete={() => handleDeleteTask(task.id)}
           handleEdit={handleEditTask}
         />
       ))}
